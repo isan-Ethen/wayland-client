@@ -12,9 +12,6 @@ const WL_DISPLAY_GET_REGISTRY: u16 = 1;
 // グローバルオブジェクトID
 const DISPLAY_ID: u32 = 1;
 
-// Redoxのsyscallクレートをインポート
-extern crate syscall;
-
 struct WaylandClient {
     stream: File,
     objects: HashMap<u32, String>,
