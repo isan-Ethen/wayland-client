@@ -189,9 +189,8 @@ fn from_syscall_error(error: syscall::Error) -> io::Error {
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Waylnadソケットパスを取得
-    let xdg_runtime_dir = env::var("XDG_RUNTIME_DIR").unwrap_or_else(|_| {
-        "/tmp/redox-wayland-".to_string() + &syscall::getpid().unwrap().to_string()
-    });
+    let xdg_runtime_dir =
+        env::var("XDG_RUNTIME_DIR").unwrap_or_else(|_| "/tmp/redox-wayland-99".to_string());
 
     let socket_name = env::var("WAYLAND_DISPLAY").unwrap_or_else(|_| "wayland-0".to_string());
     let socket_path = Path::new(&xdg_runtime_dir).join(&socket_name);
