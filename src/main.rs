@@ -181,9 +181,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     println!("Connected to Wayland server");
 
-    let _callback_id = client.send_sync()?;
+    let callback_id = client.send_sync()?;
+    println!("callback id: {}", callback_id);
 
-    let _registry_id = client.get_registry()?;
+    let registry_id = client.get_registry()?;
+    println!("registry id: {}", registry_id);
 
     let mut count = 0;
     while count < 20 {
