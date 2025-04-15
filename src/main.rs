@@ -172,7 +172,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     println!("Connecting to Wayland compositor at {:?}", socket_path);
 
-    let scheme_path = format!("chan:{}", socket_path.to_string_lossy());
+    let scheme_path = format!("/scheme/chan{}", socket_path.to_string_lossy());
 
     let client_fd = syscall::open(&scheme_path, syscall::O_RDWR).map_err(from_syscall_error)?;
 
